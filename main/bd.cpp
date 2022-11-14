@@ -3,18 +3,6 @@
 #include <vector>
 #include "memoria.h"
 
-Memoria memoria_i2c = Memoria();
-
-void tipo_registro::cria_cabecalho(Cabecalho *c)
-{
-    memoria_i2c.escreve(0, c, sizeof(Cabecalho));
-};
-
-void tipo_registro::le_cabecalho(Cabecalho *c)
-{
-    memoria_i2c.le(0, c, sizeof(Cabecalho));
-    printf(memoria_i2c.le(0, c, sizeof(Cabecalho)));
-}
 /*void tipo_registro::insere_cadastro(uint16_t nome, uint16_t endereco, uint16_t telefone){
 
 };
