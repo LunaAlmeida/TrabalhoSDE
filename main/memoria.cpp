@@ -27,7 +27,7 @@ void Memoria::init (uint8_t device)
 {
 		dispositivoAlvo = device;
 		meuI2c.configura (PIN16,PIN5);
-		meuBD.cria_cabecalho(0, 1000);
+		//meuBD.cria_cabecalho(0, 1000);
 
 
 }

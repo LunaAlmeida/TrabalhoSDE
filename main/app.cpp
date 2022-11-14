@@ -42,12 +42,13 @@ char menu(void)
 void app_main()
 {
   Memoria memoria_i2c = Memoria();
-
+  memoria_i2c.init(0);
   
   serial.begin(9600);
   char nome[100];
   char telefone[100];
   char endereco[100];
+  
   while (1)
   {
     char opcao_digitada = menu();
@@ -71,7 +72,7 @@ void app_main()
   		  printf("Opcao 0 selecionada\n");
   		break;
   	  case '7':
-        memoria_i2c.init(0);
+
   		  printf("Opcao 1 selecionada\n");
   		break;
   }

@@ -1,26 +1,24 @@
 #include "bd.h"
 #include <stdio.h>
 #include <vector>
+#include "memoria.h"
 
-typedef struct {
-      char nome[20];
-      char telefone[14];
-      char endereco[30];
-} Registro;
+Memoria memoria_i2c = Memoria();
 
-Registro func[1000];
-
-void tipo_registro::cria_cabecalho(int numero_do_registro, int quantidade_maxima)
+void tipo_registro::cria_cabecalho(Cabecalho *c)
 {
-    numero_do_registro = numero_do_registro;
-    quantidade_maxima = quantidade_maxima;
-    printf("num registro: %d e qtd max: %d", numero_do_registro, quantidade_maxima);
+    memoria_i2c.escreve(0, c, sizeof(Cabecalho));
 };
 
-void tipo_registro::insere_cadastro(uint16_t nome, uint16_t endereco, uint16_t telefone){
+void tipo_registro::le_cabecalho(Cabecalho *c)
+{
+    memoria_i2c.le(0, c, sizeof(Cabecalho));
+    printf(memoria_i2c.le(0, c, sizeof(Cabecalho)));
+}
+/*void tipo_registro::insere_cadastro(uint16_t nome, uint16_t endereco, uint16_t telefone){
 
 };
-/*void tipo_registro::le_registro (uint16_t numero_do_registro, tipo_registro &R)
+void tipo_registro::le_registro (uint16_t numero_do_registro, tipo_registro &R)
 {
 
 };
