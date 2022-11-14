@@ -15,11 +15,13 @@
 #include "esp_spi_flash.h"
 #include "serial.h"
 #include "memoria.h"
-#include <inttypes.h> 
+#include <inttypes.h>
+#include "cabecalho.h"
 
+extern "C" void app_main();
+int v = 0;
 
-extern "C" void app_main() ;
-int v=0;
+Cabecalho cabecalho;
 
 char menu(void)
 {
@@ -36,45 +38,47 @@ char menu(void)
 
   opcao = serial.readChar();
 
-
   return opcao;
 }
 void app_main()
 {
   Memoria memoria_i2c = Memoria();
   memoria_i2c.init(0);
-  
+
   serial.begin(9600);
   char nome[100];
   char telefone[100];
   char endereco[100];
-  
+
   while (1)
   {
     char opcao_digitada = menu();
     switch (opcao_digitada)
     {
-  	  case '2':
-        printf("Entre com o nome: ");
-    
-        serial.readString((uint8_t *)nome,10);
-        printf("%s\n",nome);
-        memoria_i2c.escreve();
-        
-        printf("Entre com o Endereco: ");
-        serial.readString((uint8_t *)endereco,10);
-        printf("%s\n",endereco);
-        
-        printf("Entre com o telefone: ");
-        serial.readString((uint8_t *)telefone,10);
-        printf("%s\n",telefone);
+    case '2':
+      printf("Entre com o nome: ");
 
-  		  printf("Opcao 0 selecionada\n");
-  		break;
-  	  case '7':
+      serial.readString((uint8_t *)nome, 10);
+      printf("%s\n", nome);
+      // memoria_i2c.escreve();
 
-  		  printf("Opcao 1 selecionada\n");
-  		break;
-  }
+      printf("Entre com o Endereco: ");
+      serial.readString((uint8_t *)endereco, 10);
+      printf("%s\n", endereco);
+
+      printf("Entre com o telefone: ");
+      serial.readString((uint8_t *)telefone, 10);
+      printf("%s\n", telefone);
+
+      printf("Opcao 0 selecionada\n");
+      break;
+    case '7':
+      cabecalho.numero_de_registro_usado = 0;
+      cabecalho.quantidade_maxima_de_registro = 1023;
+
+      cria_cabecalho(cabecalho);
+      printf("Opcao 1 selecionada\n");
+      break;
+    }
   }
 }
