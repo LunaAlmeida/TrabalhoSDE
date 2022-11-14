@@ -18,14 +18,6 @@
 #include <inttypes.h> 
 
 
-typedef struct {
-      char nome[20];
-      char telefone[14];
-      char endereco[30];
-} Registro;
-
-Registro func[1000];
-
 extern "C" void app_main() ;
 int v=0;
 
@@ -53,7 +45,9 @@ void app_main()
 
   
   serial.begin(9600);
-  char leitura[100];
+  char nome[100];
+  char telefone[100];
+  char endereco[100];
   while (1)
   {
     char opcao_digitada = menu();
@@ -62,16 +56,17 @@ void app_main()
   	  case '2':
         printf("Entre com o nome: ");
     
-        serial.readString((uint8_t *)leitura,10);
-        printf("%s\n",leitura);
+        serial.readString((uint8_t *)nome,10);
+        printf("%s\n",nome);
+        memoria_i2c.escreve();
         
         printf("Entre com o Endereco: ");
-        serial.readString((uint8_t *)leitura,10);
-        printf("%s\n",leitura);
+        serial.readString((uint8_t *)endereco,10);
+        printf("%s\n",endereco);
         
         printf("Entre com o telefone: ");
-        serial.readString((uint8_t *)leitura,10);
-        printf("%s\n",leitura);
+        serial.readString((uint8_t *)telefone,10);
+        printf("%s\n",telefone);
 
   		  printf("Opcao 0 selecionada\n");
   		break;
