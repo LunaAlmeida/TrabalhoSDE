@@ -141,3 +141,4 @@ app.o: \
 /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/i2c.h:
 
 /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/bd.h:
+/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/./app.cpp:

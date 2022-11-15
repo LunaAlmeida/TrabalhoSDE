@@ -17,8 +17,8 @@ class Memoria {
 		uint8_t dispositivoAlvo;
 		void testa_eeprom_disponivel(void);
 		I2C meuI2c;
-		tipo_registro meuBD;
 
 };
 
+extern Memoria MEMORIA;
 #endif

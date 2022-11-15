@@ -33,3 +33,4 @@ bd.o: \
 /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h:
 
 /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h:
+/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/./bd.cpp:
