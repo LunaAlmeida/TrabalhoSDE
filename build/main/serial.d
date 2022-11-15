@@ -1,9 +1,9 @@
 serial.o: \
- /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/exemplo_cpp/main/serial.cpp \
- /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/exemplo_cpp/main/serial.h \
+ /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/serial.cpp \
+ /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/serial.h \
  /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h \
  /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h \
- /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/exemplo_cpp/build/include/sdkconfig.h \
+ /home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/build/include/sdkconfig.h \
  /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h \
  /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h \
  /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/esp8266/include/driver/soc.h \
@@ -41,13 +41,13 @@ serial.o: \
  /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
  /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h
 
-/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/exemplo_cpp/main/serial.h:
+/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/serial.h:
 
 /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h:
 
 /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h:
 
-/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/exemplo_cpp/build/include/sdkconfig.h:
+/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/build/include/sdkconfig.h:
 
 /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h:
 
@@ -120,4 +120,4 @@ serial.o: \
 /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h:
 
 /home/aluno/DEVEL/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h:
-/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/exemplo_cpp/main/./serial.cpp:
+/home/aluno/SistemasDigitalsEmbarcados-master/Unidade2/Codigo/TrabalhpSDE/main/./serial.cpp:
