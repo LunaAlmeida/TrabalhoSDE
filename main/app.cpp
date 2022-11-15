@@ -21,18 +21,7 @@
 extern "C" void app_main();
 int v = 0;
 
-printf(Cabecalho::info);
-typedef struct {
-        char nome[20];
-        char telefone[14];
-        char endereco[30];
-} Registro;
-
-/*typedef struct
-{
-      static int numero_de_registro_usado;
-      static int quantidade_maxima_de_registro;
-} Cabecalho1;*/
+Cabecalho cabecalho;
 
 char menu(void)
 {
@@ -54,7 +43,7 @@ char menu(void)
 void app_main()
 {
   Memoria memoria_i2c = Memoria();
-  tipo_registro meuBD = tipo_registro();
+
   memoria_i2c.init(0);
 
   serial.begin(9600);
@@ -88,9 +77,12 @@ void app_main()
       cabecalho.numero_de_registro_usado = 0;
       cabecalho.quantidade_maxima_de_registro = 1023;
 
-      meuBD.cria_cabecalho(cabecalho);
+      cria_cabecalho(&cabecalho);
       printf("Opcao 1 selecionada\n");
       break;
+    case '0':
+      le_cabecalho();
+    break;
     }
   }
 }

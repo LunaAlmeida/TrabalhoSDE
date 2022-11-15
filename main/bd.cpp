@@ -3,7 +3,6 @@
 #include <vector>
 #include "memoria.h"
 
-Memoria memoria_i2c = Memoria();
 /*void tipo_registro::insere_cadastro(uint16_t nome, uint16_t endereco, uint16_t telefone){
 
 };
@@ -16,18 +15,18 @@ void tipo_registro::salva_registro(uint16_t numero_do_registro, tipo_registro R)
 
 };*/
 
-void tipo_registro::cria_cabecalho(Cabecalho c)
+void cria_cabecalho(Cabecalho *c)
 {
-    c = { .bits = x };
-    uint8_t x = c.bits;
+    printf("Chegou aqui. Infos no cabecalho, num de registros: %d | quantidade maxima: %d \n", c->numero_de_registro_usado, c->quantidade_maxima_de_registro);
+    MEMORIA.escreve(0, (uint8_t*) c, 4 + sizeof(Cabecalho));
 
-    printf("entrou");
-    memoria_i2c.escreve(0, x, sizeof(Cabecalho));
 }
-void tipo_registro::le_cabecalho(Cabecalho c)
+Cabecalho le_cabecalho()
 {
-
-    memoria_i2c.le(0, c, sizeof(Cabecalho));
+    Cabecalho cabecalho_atual;
+    MEMORIA.le(0, (uint8_t*) &cabecalho_atual, sizeof(Cabecalho));
+    printf("Infos no cabecalho, num de registros: %d | quantidade maxima: %d \n", cabecalho_atual.numero_de_registro_usado, cabecalho_atual.quantidade_maxima_de_registro);
+    return cabecalho_atual;
 }
 
 /*uint16_t tipo_registro::salva_cabecalho (uint16_t quantidade_de_registro, char comando)
@@ -43,4 +42,4 @@ void tipo_registro::le_cabecalho(Cabecalho c)
     return quantidade;
 };*/
 
-tipo_registro Tipo_registro = tipo_registro();
+//tipo_registro Tipo_registro = tipo_registro();
