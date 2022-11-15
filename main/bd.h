@@ -17,11 +17,21 @@ typedef struct {
 
 void cria_cabecalho(Cabecalho *c);
 Cabecalho le_cabecalho();
-//void insere_cadastro(uint16_t nome, uint16_t endereco, uint16_t telefone);
+
+void salva_registro(uint16_t numero_do_registro, Registro *R);
+void lista_registros();
+
+void atualiza_cabecalho();
+
+void busca_nome(char n[20]);
+
+Registro busca_telefone(char t[14]);
+
+void remove_registro(char t[14]);
+void remove_cabecalho();
+//
 /*void le_registro (uint16_t numero_do_registro, tipo_registro &R);
-void salva_registro(uint16_t numero_do_registro, tipo_registro R);
-void le_cabecalho (uint16_t quantidade_de_registro);
-uint16_t salva_cabecalho (uint16_t quantidade_de_registro, char comando);*/
+*/
 
 
 #endif
