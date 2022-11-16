@@ -1,11 +1,3 @@
-/* Hello World Example
-
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
 #include <stdio.h>
 #include <string.h>
 
@@ -49,7 +41,6 @@ void app_main()
   serial.begin(9600);
   char nome[20];
   char telefone[14];
-  char endereco[30];
 
   while (1)
   {
@@ -63,13 +54,12 @@ void app_main()
         Cabecalho posicao;
         Registro novo_registro;
 
-        posicao = le_cabecalho();
-        printf("Entre com o nome: ");
+        posicao = le_cabecalho('2');
+        printf("Entre com o nome: \n");
 
         serial.readString((uint8_t *)novo_registro.nome, 20);
         
         printf("%s\n", novo_registro.nome);
-        // memoria_i2c.escreve();
 
         printf("Entre com o Endereco: ");
         serial.readString((uint8_t *)novo_registro.endereco, 30);
@@ -98,14 +88,13 @@ void app_main()
         remove_registro(telefone);
       break;
       case '6':
-        le_cabecalho();
+        le_cabecalho('6');
       break;
       case '7':
         cabecalho.numero_de_registro_usado = 0;
         cabecalho.quantidade_maxima_de_registro = 1023;
 
         cria_cabecalho(&cabecalho);
-        printf("Opcao 1 selecionada\n");
       break;
 
     }
