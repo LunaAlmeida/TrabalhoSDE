@@ -6,9 +6,7 @@
 
 Memoria::Memoria(void)
 {
-	printf("Chama o construtor\n");
 	meuI2c = I2C();
-	//meuBD = tipo_registro();
 }
 
 void Memoria::testa_eeprom_disponivel(void)
@@ -27,12 +25,10 @@ void Memoria::init(uint8_t device)
 {
 	dispositivoAlvo = device;
 	meuI2c.configura(PIN16, PIN5);
-	// meuBD.cria_cabecalho(0, 1000);
 }
 
 void Memoria::escreve(uint16_t end, uint8_t b[], uint16_t tam)
 {
-	printf("Entrou na funcao de escreve da memoria\n");
 	uint8_t dev = 0x50 | dispositivoAlvo;
 	uint16_t endAtual = end;
 	for (int a = 0; a < tam; a++)
@@ -50,7 +46,6 @@ void Memoria::escreve(uint16_t end, uint8_t b[], uint16_t tam)
 
 void Memoria::le(uint16_t end, uint8_t b[], uint16_t tam)
 {
-	printf("Entrou na funcao de ler da memoria\n");
 	uint8_t dev = 0x50 | dispositivoAlvo;
 	uint16_t endAtual = end;
 	testa_eeprom_disponivel();

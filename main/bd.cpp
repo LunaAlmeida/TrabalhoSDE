@@ -4,59 +4,55 @@
 #include "memoria.h"
 #include <string.h>
 
-/*void tipo_registro::insere_cadastro(uint16_t nome, uint16_t endereco, uint16_t telefone){
-
-};
-void tipo_registro::le_registro (uint16_t numero_do_registro, tipo_registro &R)
-{
-
-};
-void tipo_registro::salva_registro(uint16_t numero_do_registro, tipo_registro R)
-{
-
-};*/
-
 void cria_cabecalho(Cabecalho *c)
 {
-    printf("Chegou aqui. Infos no cabecalho, num de registros: %d | quantidade maxima: %d \n", c->numero_de_registro_usado, c->quantidade_maxima_de_registro);
-    MEMORIA.escreve(0, (uint8_t*) c, 4 + sizeof(Cabecalho));
+    MEMORIA.escreve(0, (uint8_t*) c, sizeof(Cabecalho));
 }
 
 void atualiza_cabecalho()
 {
-    Cabecalho cabecalho_atual = le_cabecalho();
+    Cabecalho cabecalho_atual = le_cabecalho('0');
     cabecalho_atual.numero_de_registro_usado = cabecalho_atual.numero_de_registro_usado + 1;
     MEMORIA.escreve(0, (uint8_t *) &cabecalho_atual, sizeof(Cabecalho));
 };
 
 void remove_cabecalho()
 {
-    Cabecalho cabecalho_atual = le_cabecalho();
+    Cabecalho cabecalho_atual = le_cabecalho('0');
     cabecalho_atual.numero_de_registro_usado = cabecalho_atual.numero_de_registro_usado - 1;
     MEMORIA.escreve(0, (uint8_t *) &cabecalho_atual, sizeof(Cabecalho));
 };
 
-Cabecalho le_cabecalho()
+Cabecalho le_cabecalho(char comando)
 {
     Cabecalho cabecalho_atual;
     MEMORIA.le(0, (uint8_t*) &cabecalho_atual, sizeof(Cabecalho));
-    printf("Numero de registros atualmente ocupados: %d\n", cabecalho_atual.numero_de_registro_usado);
+    if(comando == '6')
+    {
+        printf("Numero de registros atualmente ocupados: %d\n", cabecalho_atual.numero_de_registro_usado);
+    }
+    
     return cabecalho_atual;
 }
 
 void salva_registro(uint16_t numero_do_registro, Registro *R){
-    //printf("INFOS: nome: %s\n endereco: %s\n telefone:%s\n", R->nome, R->endereco, R->telefone);
-
     uint16_t posicao;
+
+    if(numero_do_registro == 1023)
+    {
+        printf("ERRO. MEMORIA CHEIA!!!\n");
+    }else{
+        posicao = 4 + (numero_do_registro)*sizeof(Registro);
+        MEMORIA.escreve(posicao, (uint8_t*) R,sizeof(Registro));
+        atualiza_cabecalho();
+    }
     
-    posicao = 4 + (numero_do_registro)*sizeof(Registro);
-    MEMORIA.escreve(posicao, (uint8_t*) R,sizeof(Registro));
-    atualiza_cabecalho();
+
 };
 
 void lista_registros()
 {
-    Cabecalho numero_de_registros = le_cabecalho();
+    Cabecalho numero_de_registros = le_cabecalho('1');
     Registro registro_consultado;
 
     uint16_t posicao;
@@ -71,7 +67,7 @@ void lista_registros()
 void busca_nome(char n[20])
 {
     bool encontrou = false;
-    Cabecalho numero_de_registros = le_cabecalho();
+    Cabecalho numero_de_registros = le_cabecalho('3');
     Registro registro_consultado;
 
     uint16_t posicao;
@@ -97,7 +93,7 @@ void busca_nome(char n[20])
 Registro busca_telefone(char t[14])
 {
     bool encontrou = false;
-    Cabecalho numero_de_registros = le_cabecalho();
+    Cabecalho numero_de_registros = le_cabecalho('4');
     Registro registro_telefone;
     Registro registro_consultado;
 
@@ -129,7 +125,7 @@ void remove_registro(char t[14])
     Registro registro_remover;
     registro_remover = busca_telefone(t);
 
-    Cabecalho numero_de_registros = le_cabecalho();
+    Cabecalho numero_de_registros = le_cabecalho('5');
     Registro registro_consultado;
 
     uint16_t posicao;
@@ -137,7 +133,6 @@ void remove_registro(char t[14])
     {
         posicao = 4 + (i)*sizeof(Registro);
         MEMORIA.le(posicao, (uint8_t *) &registro_consultado, sizeof(Registro));
-        printf("TELEFONE PRA APAGAR: %s | TELEFONE PARA COMPARAR: %s\n", registro_remover.telefone, registro_consultado.telefone);
         if(strcmp(registro_consultado.telefone, registro_remover.telefone)  == 0)
         {
             posicao = 4 + (numero_de_registros.numero_de_registro_usado - 1)*sizeof(Registro);
