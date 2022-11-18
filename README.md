@@ -1,5 +1,3 @@
-# Hello World Example
+# Virtual Agenda
 
-Starts a FreeRTOS task to print "Hello World"
-
-See the README.md file in the upper level 'examples' directory for more information about examples.
+Project for the Embedded Systems class, where an electronic agenda was developed using ESP8266 and the AT24C512 serial memory chip.
